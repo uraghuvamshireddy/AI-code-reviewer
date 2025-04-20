@@ -22,8 +22,33 @@ const  Dashboard =()=>{
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/ai/get-review`,{code})
       setReview(response.data)
     }
-  
-  
+   
+    useEffect(() => {
+      const handleSave = async () => {
+        const token = localStorage.getItem('token');
+        const name = prompt("Enter file name:");
+        if (!name) return;
+        try {
+          await axios.post(`${import.meta.env.VITE_API_URL}/code/save-code`,
+             { filename:name, code },
+             {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          alert("Code saved successfully!");
+        } catch (err) {
+          console.error(err);
+          alert("Failed to save code");
+        }
+      };
+    
+      document.addEventListener("trigger-save", handleSave);
+      return () => document.removeEventListener("trigger-save", handleSave);
+    }, [code]);
+    
+    
   
     return (
       <>
