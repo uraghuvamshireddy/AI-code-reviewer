@@ -8,10 +8,51 @@ html,body,#root{
   height: 100%;
   width: 100%;
 }
-main{
+.dashboard{
   height: 100%;
   width: 100%;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.navbar{
+   color: #000000;
+   border-radius: 0.7rem;
+   height: 8%;
+}
+
+.nav{
+  display: flex;
+}
+.name{
+  color: rgb(223, 136, 55);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.button{
+  position: absolute;
+  right: 1rem;
+  color: #000000;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.7rem;
+}
+.history, .logout,.save{
+  margin-right:10px;
+  background-color: rgb(219, 219, 255);
+  color: #000000;
+  font-weight: 500;
+}
+
+main{
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
   display: flex;
   gap: 1rem;
 }
@@ -48,6 +89,7 @@ main .left .review {
   user-select: none;
   border-radius: 0.7rem;
 }
+
 main .right{
   background-color: rgb(80, 69, 69);
   padding: 1rem 2rem;
