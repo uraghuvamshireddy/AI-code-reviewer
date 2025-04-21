@@ -165,6 +165,8 @@ html,body,#root{
   color: #000000;
   font-weight: 500;
 }
+
+
 .lang{
   right: 1rem;
   color: #000000;
@@ -277,6 +279,29 @@ main .right{
   transform: translateY(-5px);
   border-color: #00d9ff;
   color:#00d9ff;
+}
+
+.delete-file {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Fira Code', monospace;
+  
+}
+
+.delete-file:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+}
+
+.delete-file:active {
+  transform: scale(0.95);
 }
 
 
