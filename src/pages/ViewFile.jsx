@@ -28,12 +28,13 @@ const ViewFile = () => {
         }, [id]);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="viewfile-container">
            {file ? (
         <>
           <h2>{file.filename}</h2>
-          <pre>{file.code}</pre>
-        </>
+          <div className="code-box">
+            <pre>{file.code}</pre>
+          </div>        </>
       ) : (
         <p>Loading file...</p>
       )}

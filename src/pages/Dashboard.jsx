@@ -5,6 +5,16 @@ import prism from "prismjs"
 import Markdown from "react-markdown"
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
+import "prismjs/components/prism-clike";      
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp";
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-markup";  
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-typescript";
 import axios from 'axios'
 import Navbar from './Navbar'
 
@@ -13,6 +23,7 @@ const  Dashboard =()=>{
     const [code,setCode] = useState(`function sum(){
       return 1+1}`)
     const [review,setReview] = useState(``)  
+    const [language, setLanguage] = useState("javascript");
   
     useEffect(()=>{
       prism.highlightAll()
@@ -53,14 +64,14 @@ const  Dashboard =()=>{
     return (
       <>
        <div className="dashboard">
-        <div className="navbar"><Navbar /></div>
+        <div className="navbar"><Navbar language={language} setLanguage={setLanguage} /></div>
         <main>
         <div className="left">
           <div className="code">
           <Editor 
           value = {code}
           onValueChange={code => setCode(code)}
-          highlight = {code => prism.highlight(code,prism.languages.javascript,"javascript")}
+          highlight = {code => prism.highlight(code,prism.languages[language],language)}
           padding = {10}
           style = {{
             fontFamily: '"Fira code", "Fira Mono", monospace',

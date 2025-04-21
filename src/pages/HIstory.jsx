@@ -20,18 +20,20 @@ useEffect(()=>{
     fetchHistory();
 },[]);
 
-  return (
-    <div style = {{padding:"20px"}}>
-      <h2>Saved Files</h2>
-      <ul>
-        {files.map(file => (
-          <li key={file._id}>
-            <Link to={`/file/${file._id}`}>{file.filename} - {new Date(file.createdAt).toLocaleString()}</Link>
-          </li>
-        ))}
-      </ul>
+return (
+  <div className="history-container">
+    <h2>Saved Files</h2>
+    <div className="file-grid">
+      {files.map((file) => (
+        <Link key={file._id} to={`/file/${file._id}`} className="file-card">
+          <h4>{file.filename}</h4>
+          <p>{new Date(file.createdAt).toLocaleString()}</p>
+        </Link>
+      ))}
     </div>
-  )
+  </div>
+);
+
 }
 
 export default History

@@ -8,6 +8,123 @@ html,body,#root{
   height: 100%;
   width: 100%;
 }
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Fira Code', monospace;
+  background-color: #0e0e0e;
+}
+
+.login-left, .login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.login-left {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Deep gradient */
+  color: #ffffff;
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.login-left h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #00ffd9;
+  text-shadow: 0 0 5px #00ffd9aa;
+}
+
+.login-left p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #d8d8d8;
+}
+
+.fadein p {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+
+.fadein p:nth-child(1) { --i: 1; }
+.fadein p:nth-child(2) { --i: 2; }
+.fadein p:nth-child(3) { --i: 3; }
+.fadein p:nth-child(4) { --i: 4; }
+
+.login-right {
+  background: linear-gradient(135deg, #1a1a1a, #121212);
+  color: #e0e0e0;
+  align-items: center;
+  animation: slideInRight 1s ease-out forwards;
+}
+
+.login-box {
+  background-color: #1e1e1e;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 217, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 255, 217, 0.3);
+}
+
+.login-box h2 {
+  margin-bottom: 1.5rem;
+  color: #00d9ff;
+  font-size: 2rem;
+  text-shadow: 0 0 6px #00d9ff66;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left, .login-right {
+    flex: none;
+    width: 100%;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .login-box {
+    padding: 2rem 2.5rem;
+  }
+
+  .login-left h1 {
+    font-size: 2rem;
+  }
+
+  .login-box h2 {
+    font-size: 1.7rem;
+  }
+}
+
+
 .dashboard{
   height: 100%;
   width: 100%;
@@ -42,11 +159,20 @@ html,body,#root{
   cursor: pointer;
   border-radius: 0.7rem;
 }
-.history, .logout,.save{
+.history, .logout,.save, .lang{
   margin-right:10px;
   background-color: rgb(219, 219, 255);
   color: #000000;
   font-weight: 500;
+}
+.lang{
+  right: 1rem;
+  color: #000000;
+  padding: 0.5rem 0.25rem;
+  font-weight: 500;
+  font-size: medium;
+  cursor: pointer;
+  border-radius: 0.7rem;
 }
 
 main{
@@ -95,4 +221,99 @@ main .right{
   padding: 1rem 2rem;
   font-size: 1.5rem;
   overflow: auto;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+}
+
+.history-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.file-card {
+  background-color: #1f1f1f;
+  border: 1px solid #444;
+  padding: 20px;
+  border-radius: 8px;
+  color: #00d9ff;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-card h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.file-card p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.file-card:hover {
+  background-color: #272727;
+  transform: translateY(-5px);
+  border-color: #00d9ff;
+  color:#00d9ff;
+}
+
+
+.viewfile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+  padding: 20px;
+}
+
+.viewfile-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.code-box {
+  background-color: #1e1e1e;
+  color: #00ffcc;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  overflow-x: auto;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+}
+
+.code-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1rem;
 }
