@@ -31,6 +31,7 @@ const  Dashboard =()=>{
   
     async function reviewCode(){
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/ai/get-review`,{code})
+      console.log(response.data)
       setReview(response.data)
     }
    
@@ -90,7 +91,7 @@ const  Dashboard =()=>{
         <div className="right">
           <Markdown 
             rehypePlugins = {[rehypeHighlight]}
-           > {review}</Markdown>
+           > {review !== '' ? review : 'Click review'}</Markdown>
         </div>
        </main>
        </div>
